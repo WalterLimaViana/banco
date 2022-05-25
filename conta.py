@@ -2,17 +2,21 @@
 
 class Conta:
     def __init__(self, numero,titular,saldo,limite):
-        self.numero = numero
-        self.titular = titular
-        self.saldo = saldo
-        self.limite = limite
+        self.__numero = numero
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__limite = limite
 
 
     def extrato(self):
-        print(f'Saldo {self.saldo} do titular {self.titular}')
+        print(f'Saldo {self.__saldo} do titular {self.__titular}')
 
-    def deposita(self, valor):
-        self.saldo += valor
+    def depositar(self, valor):
+        self.__saldo += valor
 
-    def saca(self, valor):
-        self.saldo -= valor
+    def sacar(self, valor):
+        self.__saldo -= valor
+
+    def transferir(self, valor, destino):
+        self.sacar(valor)
+        destino.depositar(valor)
